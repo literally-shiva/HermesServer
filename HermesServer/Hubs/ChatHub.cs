@@ -4,9 +4,9 @@ namespace HermesServer.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string message)
+        public async Task SendMessage(string message, string userName)
         {
-            await Clients.All.SendAsync("Receive", message);
+            await Clients.All.SendAsync("Receive", message, userName);
         }
     }
 }

@@ -3,18 +3,25 @@
     .build();
 
 document.getElementById("sendButton").addEventListener("click", function () {
-    let message = document.getElementById("message").value;
-    hubConnection.invoke("SendMessage", message)
+    const message = document.getElementById("message").value;
+    const userName = document.getElementById("userName").value;
+
+    hubConnection.invoke("SendMessage", message, userName)
         .catch(function (err) {
             return console.error(err.toString());
         });
 });
 
-hubConnection.on("Receive", function (message) {
+hubConnection.on("Receive", function (message, userName) {
+    const userNameElem = document.createElement("b");
+    userNameElem.textContent = `${userName}: `;
 
-    let messageElement = document.createElement("p");
-    messageElement.textContent = message;
-    document.getElementById("chatroom").appendChild(messageElement);
+    const elem = document.createElement("p");
+    elem.appendChild(userNameElem);
+    elem.appendChild(document.createTextNode(message));
+
+    const firstElem = document.getElementById("chatroom").firstChild;
+    document.getElementById("chatroom").insertBefore(elem, firstElem);
 });
 
 hubConnection.start()
