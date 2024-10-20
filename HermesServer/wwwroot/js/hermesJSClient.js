@@ -4,7 +4,7 @@
 
 document.getElementById("sendButton").addEventListener("click", function () {
     const message = document.getElementById("message").value;
-    const userName = document.getElementById("userName").value;
+    const userName = localStorage.getItem('userName');
 
     hubConnection.invoke("SendMessage", message, userName)
         .catch(function (err) {
