@@ -10,4 +10,8 @@
     <None Include="wwwroot\html\chat.html" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+  </ItemGroup>
+
 </Project>
