@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\html\hermesJSClient.html" />
+    <None Include="wwwroot\html\chat.html" />
   </ItemGroup>
 
 </Project>
